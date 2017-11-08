@@ -17,7 +17,7 @@
 
 
 Name:           yast2-python-bindings
-Version:        3.1.1
+Version:        4.0.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -25,20 +25,25 @@ Source0:        %{name}-%{version}.tar.bz2
 
 Group:	        System/YaST
 License:        GPL-2.0
-BuildRequires:	curl-devel gcc-c++ yast2-core-devel python-devel yast2-ycp-ui-bindings-devel libtool
-BuildRequires:  yast2-devtools >= 3.1.10
+BuildRequires:  yast2-ycp-ui-bindings
+BuildRequires:  yast2-ycp-ui-bindings-devel
+BuildRequires:  autoconf-archive
+BuildRequires:  swig
+BuildRequires:  yast2-core-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  make
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
+BuildRequires:  python
+BuildRequires:  python-devel
+BuildRequires:  libyui-devel
 
-# YCPValue::valuetype_str()
-Requires:	yast2-core       >= 2.16.37
-BuildRequires:	yast2-core-devel >= 2.16.37
-BuildRequires:  yast2-ycp-ui-bindings-devel >= 2.16.37
-Requires:       yast2-ycp-ui-bindings       >= 2.16.37
-Requires:	python
-%if 0%{?suse_version} < 1220
-BuildRequires:  libxcrypt-devel
-%endif
+Requires:       yast2-ycp-ui-bindings
+Requires:	    yast2-core
+Requires:	    python
 
-Summary:	Python bindings for the YaST platform.
+Summary:	    Python bindings for the YaST platform
 
 %description
 The bindings allow YaST modules to be written using the Python language
@@ -53,16 +58,17 @@ and also Python scripts can use YaST agents, APIs and modules.
 %install
 %yast_install
 
-rm $RPM_BUILD_ROOT/%{yast_plugindir}/libpy2lang_python.la
-rm $RPM_BUILD_ROOT/%{python_sitearch}/libYCP.la
-
+rm %{buildroot}/%{python_sitelib}/*.pyc
+rm %{buildroot}/%{python_sitelib}/*.pyo
+rm %{buildroot}/%{python_sitearch}/*.la
+rm %{buildroot}/%{yast_plugindir}/libpy2lang_python.la
 
 %files
 %defattr (-, root, root)
+%{python_sitelib}/*.py
+%{python_sitearch}/_ycp.*
 %{yast_plugindir}/libpy2lang_python.so.*
 %{yast_plugindir}/libpy2lang_python.so
 
-# libYCP goes elsewhere
-# %dir %{_libdir}/python
-%{python_sitearch}/*
-%doc %{yast_docdir}
+%changelog
+
