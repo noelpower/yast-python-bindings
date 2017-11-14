@@ -1,3 +1,5 @@
+from yast import Term
+
 # placeholder for proper logging function
 # currently just dumps to stderr (should 
 # however write to yast log file)
@@ -19,4 +21,14 @@ def foreach(listOrMap):
         return None
     return listOrMap
 
+# add — Add a key/value pair to a map or list
+def add(listOrMap, key, value=None):
+    if isinstance(listOrMap, dict):
+        listOrMap[key] = value
+    elif isinstance(listOrMap, Term):
+         listOrMap.add(key)
+    else: # assume list
+        listOrMap.append(key)
+    # should we clone the listOrMap here ?
+    return listOrMap
 
