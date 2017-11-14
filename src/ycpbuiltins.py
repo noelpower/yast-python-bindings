@@ -70,3 +70,22 @@ def size(listMapOrTerm):
 
 def sleep(millisecs):
     time.sleep(millisecs/1000)
+
+def sformat(form, *pars):
+    npars = len(pars)
+    list_pars = [par for par in pars]
+    placeholders = ['%1', '%2', '%3', '%4', '%5', '%6', '%7', '%8', '%9', '%%']
+    arg_positions = []
+    for placeholder in placeholders:
+        index = 0
+        if placeholder in form:
+            while True:
+                index = form.find(placeholder, index)
+                if index == -1:
+                    break
+                pos = form[index + 1]
+                if pos != '%':
+                    arg_positions.append(pars[int(pos) - 1])
+                    form = form.replace(placeholder, '%s')
+                index = index + 2
+    return form%tuple(arg_positions)
