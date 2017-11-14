@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import ycpbuiltins
 from yast import *
 
 class AutoShortcut2Client:
@@ -25,11 +26,9 @@ class AutoShortcut2Client:
       radio_box = VBox()
 
       for sel in sw_selections:
-          radio_box.add(Left(RadioButton(Opt("autoShortcut"), sel)))
+          radio_box = ycpbuiltins.add(radio_box, Left(RadioButton(Opt("autoShortcut"), sel)))
 
-      # TODO fix/implement logging
-      #Builtins.y2milestone("radio_box: %1", @radio_box)
-      print "radio_box: %s"%radio_box.toString()
+      ycpbuiltins.y2milestone("radio_box: %s"%radio_box.toString())
 
       UI.OpenDialog(
         VBox(
