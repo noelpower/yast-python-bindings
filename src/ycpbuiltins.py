@@ -32,3 +32,8 @@ def add(listOrMap, key, value=None):
     # should we clone the listOrMap here ?
     return listOrMap
 
+def size(listMapOrTerm):
+    if isinstance(listMapOrTerm, Term):
+        return listMapOrTerm.size()
+    # assume list or map 
+    return len(listMapOrTerm)
