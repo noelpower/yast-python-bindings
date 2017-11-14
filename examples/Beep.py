@@ -2,13 +2,13 @@
 # encoding: utf-8
 
 from yast import *
-import time
+import ycpbuiltins
 
 # Test for UI::Beep()
 class BeepClient:
     def main(self):
       UI.OpenDialog(Label("Doing some operations..."))
-      time.sleep(4)
+      ycpbuiltins.sleep(4000)
       UI.CloseDialog()
 
       UI.Beep()
