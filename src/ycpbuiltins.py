@@ -1,4 +1,5 @@
 from yast import Term
+import time
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should 
@@ -37,3 +38,6 @@ def size(listMapOrTerm):
         return listMapOrTerm.size()
     # assume list or map 
     return len(listMapOrTerm)
+
+def sleep(millisecs):
+    time.sleep(millisecs/1000)
