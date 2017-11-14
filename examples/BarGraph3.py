@@ -7,6 +7,7 @@
 # and a "+" and a "-" button for each segment.
 import copy
 from yast import *
+import ycpbuiltins
 
 class BarGraph3Client:
     def main(self):
@@ -45,9 +46,9 @@ class BarGraph3Client:
       minus_buttons = HBox()
       i = 1
 
-      for val in values:
-          plus_buttons.add(HWeight(1, PushButton(Id(str(i)), "+")))
-          minus_buttons.add(HWeight(1, PushButton(Id(str(-i)), "-")))
+      for val in ycpbuiltins.foreach(values):
+          plus_buttons = ycpbuiltins.add(plus_buttons, HWeight(1, PushButton(Id(str(i)), "+")))
+          minus_buttons = ycpbuiltins.add(minus_buttons, HWeight(1, PushButton(Id(str(-i)), "-")))
           i = i + 1
       UI.OpenDialog(
         VBox(
@@ -82,17 +83,19 @@ class BarGraph3Client:
           new_values = []
           i2 = 0
 
-          while i2 < len(values):
+          while i2 < ycpbuiltins.size(values):
             old_val = values[i2]
 
             if (i2 + 1) == button_id:
-              new_values.append(
-                old_val + (sign * inc)
-              )
+              new_values = ycpbuiltins.add(
+                      new_values,
+                      old_val + (sign * inc)
+                      )
             else:
-              new_values.append(
-                  old_val + (-(sign) * (inc / (len(values) - 1) ) )
-                )
+              new_values = ycpbuiltins.add(
+                      new_values,
+                      old_val + (-(sign) * (inc / (len(values) - 1) ))
+                      )
 
             i2 = i2 + 1
 
