@@ -25,7 +25,7 @@ class AutoShortcut2Client:
 
       radio_box = VBox()
 
-      for sel in sw_selections:
+      for sel in ycpbuiltins.foreach(sw_selections):
           radio_box = ycpbuiltins.add(radio_box, Left(RadioButton(Opt("autoShortcut"), sel)))
 
       ycpbuiltins.y2milestone("radio_box: %s"%radio_box.toString())
