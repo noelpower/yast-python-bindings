@@ -33,8 +33,6 @@ class DefaultButtons1Client:
       ]
 
       self.steps = ycpbuiltins.flatten([base_installation_steps, config_steps])
-      print "steps!!! %s"%self.steps
-      print "steps[0] %s"%self.steps[0]
       if not UI.HasSpecialWidget("Wizard"):
         ycpbuiltins.y2error(
           "This works only with UIs that provide the wizard widget!"
