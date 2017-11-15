@@ -6,18 +6,18 @@ import time
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file)
-def y2milestone(msg):
-    print msg
+def y2milestone(*args):
+    print sformat(*args)
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file)
-def y2error(msg):
-    print msg
+def y2error(*args):
+    print sformat(*args)
 # placeholder for proper logging function
 # currently just dumps to stderr (should 
 # however write to yast log file)
-def y2debug(msg):
-    print msg
+def y2debug(*args):
+    print sformat(*args)
 
 # placeholder for Buildins.foreach
 def foreach(listOrMap):
@@ -71,9 +71,9 @@ def size(listMapOrTerm):
 def sleep(millisecs):
     time.sleep(millisecs/1000)
 
-def sformat(form, *pars):
-    npars = len(pars)
-    list_pars = [par for par in pars]
+def sformat(*pars):
+    list_pars = list(pars)
+    form = list_pars.pop(0)
     placeholders = ['%1', '%2', '%3', '%4', '%5', '%6', '%7', '%8', '%9', '%%']
     arg_positions = []
     for placeholder in placeholders:
@@ -84,8 +84,15 @@ def sformat(form, *pars):
                 if index == -1:
                     break
                 pos = form[index + 1]
-                if pos != '%':
-                    arg_positions.append(pars[int(pos) - 1])
+       	        if pos != '%':
+                    try:
+                        # assume YCP value
+                        arg_positions.append(pars[int(pos)].toString())
+                    except:
+                        arg_positions.append(pars[int(pos)])
+
                     form = form.replace(placeholder, '%s')
                 index = index + 2
-    return form%tuple(arg_positions)
+    if len(arg_positions):
+        return form%tuple(arg_positions)
+    return form 
