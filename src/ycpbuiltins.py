@@ -37,12 +37,12 @@ def convert_to_ycp(pyvalue):
         return String(pyvalue)
     elif isinstance(pyvalue, list):
         l = List()
-        for item in key:
+        for item in pyvalue:
             l.add(convert_to_ycp(item))
         return l
     elif isinstance(pyvalue, dict):
         m = Map()
-        for key, value in pyvalue:
+        for key, value in pyvalue.iteritems():
             m.add(convert_to_ycp(key), convert_to_ycp(value))
         return m
     elif isinstance(pyvalue, float):
@@ -70,6 +70,12 @@ def size(listMapOrTerm):
 
 def sleep(millisecs):
     time.sleep(millisecs/1000)
+
+def tostring(val):
+    try:
+        return val.toString()
+    except:
+        return str(val)
 
 def sformat(*pars):
     list_pars = list(pars)
