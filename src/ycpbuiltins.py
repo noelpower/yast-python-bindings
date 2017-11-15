@@ -63,7 +63,7 @@ def add(listOrMap, key, value=None):
     return listOrMap
 
 def size(listMapOrTerm):
-    if isinstance(listMapOrTerm, Term):
+    if isinstance(listMapOrTerm, YCPTerm):
         return listMapOrTerm.size()
     # assume list or map 
     return len(listMapOrTerm)
@@ -102,3 +102,9 @@ def sformat(*pars):
     if len(arg_positions):
         return form%tuple(arg_positions)
     return form 
+
+def flatten(lists):
+    newlist = []
+    for l in lists:
+        newlist = newlist + l
+    return newlist
