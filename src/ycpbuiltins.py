@@ -120,3 +120,14 @@ def flatten(lists):
 
 def random(maxint):
     return pyrand_range(0, maxint)
+
+def mergestring(listofstrings, glue):
+    first = True
+    result = None
+    for item in listofstrings:
+        if first:
+            result = item
+            first = False
+        else:
+            result = result + glue + item 
+    return result
