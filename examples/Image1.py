@@ -17,7 +17,7 @@ class Image1Client:
       )
       UI.UserInput()
       if UI.WidgetExists(Id("image")):
-        UI.ChangeWidget(Id("image"), "Enabled", True)
+        UI.ChangeWidget(Id("image"), "Enabled", False)
         UI.UserInput()
         UI.ChangeWidget(Id("image"), "Enabled", True)
         UI.UserInput()
