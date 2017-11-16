@@ -84,7 +84,8 @@ def size(listMapOrTerm):
     return len(listMapOrTerm)
 
 def sleep(millisecs):
-    time.sleep(millisecs/1000)
+    
+    time.sleep(float(millisecs)/1000)
 
 def tostring(val):
     try:
