@@ -28,6 +28,12 @@ def y2error(*args):
 def y2debug(*args):
     print sformat(*args)
 
+# placeholder for proper logging function
+# currently just dumps to stderr (should 
+# however write to yast log file)
+def y2internal(*args):
+    print sformat(*args)
+
 # placeholder for Buildins.foreach
 def foreach(listOrMap):
     try:
