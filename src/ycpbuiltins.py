@@ -8,6 +8,13 @@ import time
 # however write to yast log file)
 def y2milestone(*args):
     print sformat(*args)
+
+# placeholder for proper logging function
+# currently just dumps to stderr (should
+# however write to yast log file
+def y2warning(*args):
+    print sformat(*args)
+
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file)
