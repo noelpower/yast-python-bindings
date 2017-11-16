@@ -2,6 +2,8 @@ from ycp import List, String, Integer, Boolean, Float, Value
 from ycp import Term as YCPTerm
 
 import time
+from random import randint as pyrand_range
+
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should
@@ -115,3 +117,6 @@ def flatten(lists):
     for l in lists:
         newlist = newlist + l
     return newlist
+
+def random(maxint):
+    return pyrand_range(0, maxint)
