@@ -10,7 +10,7 @@ def get_caller_loginfo(frames):
     for i in range(0, frames):
         frame = frame.f_back
     info = inspect.getframeinfo(frame)
-    details = "%s:%s "%(info[0], info[1])
+    details = "%s:%s "%(os.path.basename(info[0]), info[1])
     return details
 
 # placeholder for proper logging function
