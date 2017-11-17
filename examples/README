@@ -1,0 +1,261 @@
+Run the examples by typing:
+
+   y2base ./<test>.py qt
+
+to use the graphical YaST2 user interface  (the Qt UI)
+or for the text based YaST2 user interface (the NCurses UI):
+
+   y2base ./<test>.py ncurses
+
+Depending on your system setup, you might have to specify the absolute
+path for the "y2base" command. At the time of this writing, this should be
+   /usr/lib/YaST2/bin/y2base
+
+
+Example:
+
+   y2base ./ProgressBar1.py qt
+
+
+Notes on examples ported
+
+
+Name					Progress	comments
+Alignment1.rb				Done
+AutoShortcut1.rb			Done 
+AutoShortcut2.rb			Done		y2milestone (needs something), also Builtins 'add' function (do we really need this) But.. it seems the YTerm.add doesn't return the 'Term' like the ycp 'add does. Perhaps we should do something about that
+BackgroundPixmap.rb			Done		we don't handle construction of Term very well either we need some helper(s) or we need to coerce native types better, or we actually need an implemtation similar to 'other' Terms
+BarGraph1.rb				Done
+BarGraph2.rb				Done
+BarGraph3.rb				Done		again we dont have the builtins.add , ops.add, ops.multiple etc. functions (are they realy needed ?)
+Beep.rb					Done		no builtins.sleep (using native python sleep)
+BusyIndicator.rb			Done
+ButtonBox1.rb				Done 		not sure about the f10 thing(doesn't seem to do anything in ruby either)
+ButtonBox2.rb				Done
+ButtonBox3-relaxed.rb			Done
+CheckBox1.rb				Done
+CheckBox2.rb				Done		Convert.to_boolean, Ops.add
+CheckBox3.rb				Done
+CheckBox4.rb				Done
+CheckBoxFrame1.rb			Done
+CheckBoxFrame2.rb			Done
+CheckBoxFrame3.rb			Done
+CheckBoxFrame4.rb			Done
+ComboBox-empty.rb			Done
+ComboBox-icons.rb			Done
+ComboBox-replace-items1.rb		Done
+ComboBox-set-empty.rb		        Done	
+ComboBox-setInputMaxLength.rb		Done
+ComboBox1.rb				Done
+ComboBox2.rb				Done
+ComboBox3.rb				Done
+ComboBox4.rb				Done
+ComboBox5.rb				Done
+ContextMenu.rb			        Done	
+DateField1.rb				Done
+Decorated.rb				Done
+DefaultButtons1.rb			Done		Wizard constructor is not really working as expected	
+DefaultButtons2.rb                     	Done	 
+DefaultButtons3.rb			Done		Note DefaultButtons1-3 are nearly identical, also you are not supposed to use the Wizard widget directly (but use the module functions) Also note the fact you need to create Id(blah) for the Wizard entries
+DefaultSizeDialogs.rb			Done
+DownloadProgress1.rb                    Done
+DownloadProgress2.rb			Done
+DumbTab1.rb				Done
+DumbTab2.rb				Done
+DumbTab3.rb				Done 		Have had to change the symbols passed to Change widget to 'Id()' this seems wrong
+Enabling1.rb				Done
+Enabling2.rb				Done
+Enabling3.rb				Done
+Events.rb				Done 		Quite complex
+FKeys.rb				Done		Doesn't work as advertised (but works the same as the .rb)
+FakeUserInput1.rb			Done
+FileSelection.rb			Done
+FileSelection2.rb			Done
+Frame1.rb				Done
+Frame2.rb				Done
+GetDisplayInfo.rb			Done
+Glyphs.rb				Done
+Graph1.rb				Done
+Graph2.rb				Done
+HBox1.rb				Done
+HCenter1.rb				Done
+HCenter2.rb				Done
+HCenter3.rb				Done
+HSquash1.rb				Done
+HStretch1.rb				Done
+Heading1.rb				Done
+Heading2.rb				Done
+Heading3.rb				Done
+HelloWorld.rb				Done
+HelpText.rb				Done
+IconButton1.rb				Done
+Image-animated.rb			Done		Doesn't work (neither does the .rb example) gif is missing (but attempting to add an existing one doesn't seem to help)
+Image-scaled.rb				Done            works (when you have an image at the hardcoded path)
+Image1.rb				Done		ditto
+InfoColor.rb				Done
+InputField-layout.rb			Done
+InputField-setInputMaxLength.rb		Done
+InputField1.rb				Done
+InputField2.rb				Done
+InputField3.rb				Done
+InputField4.rb				Done
+InputField5.rb				Done
+InputField6.rb				Done
+IntField1.rb				Done
+IntField2.rb				Done
+IntField3.rb				Done
+InternalError.rb			Done
+Label1.rb
+Label1_cs.rb				Done		Some string encoding/decoding issue	
+Label1_de.rb				Done		Ditto
+Label1_ja.rb				Done		Ditto
+Label2_ml.rb				Done		Ditto
+Label2.rb				Done
+Label3.rb				Done
+Label4.rb				Done	
+Layout-Buttons-Equal-Even-Spaced1.rb	Done
+Layout-Buttons-Equal-Even-Spaced2.rb	Done
+Layout-Buttons-Equal-Growing.rb		Done
+Layout-Fixed.rb				Done
+Layout-Mixed.rb				Done
+Layout-Stretchable.rb			Done
+Layout-Weights1.rb			Done
+Layout-Weights2.rb			Done
+LogView1.rb				Done
+LogView2.rb				Done
+MainDialog-popup.rb			Done
+MarginBox1.rb				Done
+MarginBox2.rb				Done
+Margins-without-MarginBox.rb		Done
+MenuButton1.rb				Done
+MenuButton2.rb				Done
+MinHeight1.rb				Done
+MinSize1.rb				Done
+MinWidth1.rb				Done
+MultiLineEdit-setInputMaxLength.rb	Done
+MultiLineEdit1.rb			Done
+MultiLineEdit2.rb			Done
+MultiLineEdit3.rb			Done
+MultiLineEdit4.rb			Done
+MultiProgressMeter1.rb			Done
+MultiProgressMeter2.rb			Done 		Incomplete (see commit message. This one I think shows a fatal flaw in the current bindings #TODO #FIXME)
+MultiSelectionBox-CurrentItem.rb	Done 		Again some strangeness (and extra manipulation of Id needed) this is due to our handling of Id
+MultiSelectionBox-replace-items1.rb	Done
+MultiSelectionBox-replace-items2.rb	Done		Only noticing now how many times I have removed ConvertToSymbol (this probably will bite if we change Id behaviour)
+MultiSelectionBox1.rb			Done
+MultiSelectionBox2.rb			Done
+MultiSelectionBox3.rb			Done
+MultiSelectionBox4.rb			Done
+MultiSelectionBox5.rb			Done
+NCursesSlideShowDemo.rb			Done		Not clear how much works, alot of code isn't exercised
+PackageSelector-10.1-stable.rb		Done		Not working (Pkg) functions not available
+PackageSelector-10.2.rb			Done		As above
+PackageSelector-YOU.rb			Done		As above
+PackageSelector-empty.rb		Done		Works (no calls to Pkg)
+PackageSelector-multi-src.rb		Done		Doesn't work (see above)
+PackageSelector-stable.rb		Done		ditto
+PackageSelector-update.rb		Done		ditto
+PackageSelector.rb			Done		ditto
+PartitionSplitter1.rb			Done
+PartitionSplitter2.rb			Done
+Password1.rb				Done
+Password2.rb				Done
+PatternSelector-empty.rb		Done
+PatternSelector-solo.rb			Done 		not working (again due to missing Pkg functions)
+PatternSelector-wizard-with-packages.rb	Done		ditto (see above) Also need to use YCPWizard, need to use Id(s) with the Wizard and additionally need to specifiy the Opt("stepsEnabled") for it to even partially work
+PatternSelector-wizard.rb		Done
+PkgSpecial.rb				Done		Doesn't work (missing widget) but ruby also doesn't work
+PollInput.rb				Done
+PollInput1.rb				Done
+PopupStressTest.rb			Done
+ProgressBar1.rb				Done
+ProgressBar2.rb				Done
+PushButton1.rb				Done
+PushButton2.rb				Done
+Puzzle.rb				Done
+RadioButton1.rb				Done 		Note: Forced to create 'string' Id even when intentionally it is a number (#FIXME) we need to change handling of Id (however this will probably break lots of our examples) :/
+RadioButton2.rb				Done		same as above		
+ReallyAbortPopup.rb			Done
+RelNotesButton.rb			Done		Not working because of missing SCR functions
+ReplacePoint1.rb			Done
+RichText-hyperlinks.rb			Done
+RichText-license.rb			Done		Note sure if this is working, use of SCR functions again (these could be replaced with native python in htis instance)
+RichText1.rb				Done
+RichText1_cs.rb				Done		Like some previous examples the use of escaped string literals is not working as expected
+RichText2.rb				Done
+RichText3.rb				Done
+RichText4.rb				Done
+RichText5.rb				Done
+RichText6.rb				Done
+Scroller.rb				Done
+SelectionBox-icons.rb			Done
+SelectionBox-replace-items1.rb		Done
+SelectionBox-replace-items2.rb		Done
+SelectionBox1.rb			Done
+SelectionBox2.rb			Done
+SelectionBox3.rb			Done		Again note the fact we have to pass Id('nap') instead of string
+SelectionBox4.rb			Done
+SelectionBox5.rb			Done
+SetLanguage.rb				Done		Another one with escaped string literals (not working as expected)
+ShortcutCheckPostponed.rb		Done		Again problems with numerical Id(s) The y1log output seems different between ruby and py, not sure
+what the example is really about #INVESTIGATE 
+
+ShortcutConflict1.rb			Done		No support for Numerical Id(s0
+ShortcutConflict2.rb			Done		ditto
+ShortcutConflict3.rb			Done		ditto
+ShortcutConflict4.rb			Done		ditto
+ShortcutConflict5.rb			Done		problems with Wizard(namespace) and also launching wizard
+ShortcutConflict6.rb			Done
+SimplePatchSelector-empty.rb		Done		
+SimplePatchSelector-stable.rb		Done		not working due to missing Pkg functions
+SlideShowDemo.rb			Done		Wizard issues (namespace) also needing to use Id (but still works in the end and is a faily complex example)
+SlideShowDemo2.rb			Done		not working Getting some strange "Invalid arguments for the ReplacePoint widget" perhaps its an error in my porting  (also same issues with previous example)
+Slider1.rb				Done	
+Slider2.rb				Done
+SmallDecorations.rb			Done
+Spacing1.rb				Done
+SpecialWidget.rb			Done
+Table-icons.rb				Done		Not working This example is non-functional due to some missing builtins
+methods but also because there is missing SCR functions
+Table-sorting.rb			Done		Numeric Id(s) (which are not supported), also None can't be used as value for Item (in ruby nil works)
+Table1.rb				Done		as above
+Table1_utf8.rb				Done		as above (and additionally the usual issues with literal string encoding)
+Table2.rb				Done		as above (not the literal string bit) also note: the convoluted convertions needed to cater for the lack of numeric Id support (#FIXME)
+Table3.rb				Done		as above
+Table4.rb				Done		as above (this example also has unintuitive need to switch pass Id into queryWidget)
+Table5.rb				Done		as above and querying the amount shown the hoops you need to go through to manage without the numberic id
+Table6-multiSel.rb
+Table7-multiSel.rb
+Table8-multiSel.rb
+TextEntry-layout.rb
+TextMode.rb
+TimeField1.rb
+TimeoutUserInput.rb
+TimezoneSelector.rb
+TooBig.rb
+Tree-Checkbox.rb
+Tree-Checkbox2.rb
+Tree-Checkbox3.rb
+Tree-Checkbox4.rb
+Tree-icons.rb
+Tree-recursive-large.rb
+Tree-replace-items.rb
+Tree1.rb
+Tree2.rb
+Tree3.rb
+Tree4.rb
+UserInput.rb
+VBox1.rb
+WaitForEvent.rb
+Weight1.rb
+Weight2.rb
+WidgetExists.rb
+WindowID.rb
+Wizard-SetDesktopTitle.rb
+Wizard-popup.rb
+Wizard1.rb
+Wizard2.rb
+Wizard3.rb
+Wizard4.rb
+win_resizer.rb
+win_resizer2.rb
