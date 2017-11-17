@@ -1,38 +1,47 @@
 from ycp import List, String, Integer, Boolean, Float, Value
 from ycp import Term as YCPTerm
 
-import time
+import time, inspect, os
 from random import randint as pyrand_range
 
+# returns the caller n frames back
+def get_caller_loginfo(frames):
+    frame = inspect.currentframe()
+    for i in range(0, frames):
+        frame = frame.f_back
+    info = inspect.getframeinfo(frame)
+    details = "%s:%s "%(info[0], info[1])
+    return details
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file)
 def y2milestone(*args):
-    print sformat(*args)
+    print get_caller_loginfo(2) + sformat(*args)
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file
 def y2warning(*args):
-    print sformat(*args)
+    print get_caller_loginfo(2) + sformat(*args)
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should
 # however write to yast log file)
 def y2error(*args):
-    print sformat(*args)
+    print get_caller_loginfo(2) + sformat(*args)
+
 # placeholder for proper logging function
 # currently just dumps to stderr (should 
 # however write to yast log file)
 def y2debug(*args):
-    print sformat(*args)
+    print get_caller_loginfo(2) + sformat(*args)
 
 # placeholder for proper logging function
 # currently just dumps to stderr (should 
 # however write to yast log file)
 def y2internal(*args):
-    print sformat(*args)
+    print get_caller_loginfo(2) + sformat(*args)
 
 # placeholder for Buildins.foreach
 def foreach(listOrMap):
