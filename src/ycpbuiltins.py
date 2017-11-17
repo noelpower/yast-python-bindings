@@ -69,7 +69,7 @@ def convert_to_ycp(pyvalue):
 def add(listOrMap, key, value=None):
     if isinstance(listOrMap, dict):
         listOrMap[key] = value
-    elif isinstance(listOrMap, List):
+    elif isinstance(listOrMap, List) or isinstance(listOrMap, YCPTerm):
          ycpvalue = convert_to_ycp(key)
          listOrMap.add(ycpvalue)
     else: # assume list
