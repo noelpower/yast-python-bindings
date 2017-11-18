@@ -224,7 +224,7 @@ Table2.rb				Done		as above (not the literal string bit) also note: the convolut
 Table3.rb				Done		as above
 Table4.rb				Done		as above (this example also has unintuitive need to switch pass Id into queryWidget)
 Table5.rb				Done		as above and querying the amount shown the hoops you need to go through to manage without the numberic id
-Table6-multiSel.rb
+Table6-multiSel.rb			Done		as above
 Table7-multiSel.rb
 Table8-multiSel.rb
 TextEntry-layout.rb
