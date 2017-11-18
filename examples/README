@@ -225,15 +225,15 @@ Table3.rb				Done		as above
 Table4.rb				Done		as above (this example also has unintuitive need to switch pass Id into queryWidget)
 Table5.rb				Done		as above and querying the amount shown the hoops you need to go through to manage without the numberic id
 Table6-multiSel.rb			Done		as above
-Table7-multiSel.rb
-Table8-multiSel.rb
-TextEntry-layout.rb
-TextMode.rb
-TimeField1.rb
-TimeoutUserInput.rb
-TimezoneSelector.rb
+Table7-multiSel.rb			Done		as above
+Table8-multiSel.rb			Done		as above (also deepcopy issue with 'Term' objects in lists)
+TextEntry-layout.rb			Done
+TextMode.rb				Done
+TimeField1.rb				Done
+TimeoutUserInput.rb			Done
+TimezoneSelector.rb			Done		missing access to Directory.themedir (example modified to use hardcoded path)
 TooBig.rb
-Tree-Checkbox.rb
+Tree-Checkbox.rb			Done		again need to do an unintuitive Id for ChangeWidget, this might be just unavaoidable difference in py/rub (and handling of ':') but worth looking into UI.ChangeWidget("mod", "SelectedItems", [Id("xmas"), Id("newyear")]) vs UI.ChangeWidget("mod", "SelectedItems", [:xmas, :newyear])
 Tree-Checkbox2.rb
 Tree-Checkbox3.rb
 Tree-Checkbox4.rb
