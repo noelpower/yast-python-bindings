@@ -150,3 +150,10 @@ def mergestring(listofstrings, glue):
         else:
             result = result + glue + item 
     return result
+def substring(s, start, num_chars=None):
+    result = None
+    try:
+        result = s[start:start + num_chars]
+    except:
+        retult = ""
+    return result
