@@ -24,6 +24,7 @@ class Tree1Client:
                       [Item("opt"), Item("SuSEconfig"), Item("X11")]
                     ),
                     Item(
+                      Id("usr"),
                       "usr",
                       False,
                       [
@@ -61,11 +62,11 @@ class Tree1Client:
         id = UI.UserInput()
 
         if id == "sel_usr":
-          UI.ChangeWidget("dest_dir", "CurrentItem", "usr")
+          UI.ChangeWidget("dest_dir", "CurrentItem", Id("usr"))
         elif id == "sel_usr_local":
-          UI.ChangeWidget("dest_dir", "CurrentItem", "usr_local")
+          UI.ChangeWidget("dest_dir", "CurrentItem", Id("usr_local"))
         elif id == "sel_opt":
-          UI.ChangeWidget("dest_dir", "CurrentItem", "opt")
+          UI.ChangeWidget("dest_dir", "CurrentItem", Id("opt"))
         if id == "ok":
           break
 
