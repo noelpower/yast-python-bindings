@@ -100,7 +100,6 @@ meta_funcs = {
         'HVStretch': False,
         'IconButton': False,
         'PkgSpecial': False,
-        'PkgSpecial': False,
        }
 
 for func in meta_funcs.keys():
