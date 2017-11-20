@@ -7,13 +7,12 @@ from yast import *
 class BackgroundPixmapClient:
     def main(self):
       l = List()
-      l.add(String("/usr/share/wallpapers/Mountains.jpg"))
       UI.OpenDialog(
         Opt("defaultsize"),
         VBox(
           HVCenter(
             #term("BackgroundPixmap", "wallpapers/welcome.jpg"),
-            Term("BackgroundPixmap", l),
+            Term("BackgroundPixmap", "/usr/share/wallpapers/Mountains.jpg"),
             MinSize(20, 7, SelectionBox("", ["English", "Italiano", "Klingon"]))
           ),
           Right(PushButton(Opt("default"), "&Close"))
