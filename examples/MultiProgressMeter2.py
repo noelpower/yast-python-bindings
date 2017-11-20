@@ -65,7 +65,7 @@ class MultiProgressMeter2Client:
             VBox(
               Heading("MultiProgressMeter Example"),
               VSpacing(1),
-              slidersVBox(maxValueList, valueList),
+              self.slidersVBox(maxValueList, valueList),
               radioBox,
               VStretch()
             ),
@@ -74,7 +74,7 @@ class MultiProgressMeter2Client:
               Id("rep_vProgress"),
               VMultiProgressMeter(
                 Id("vProgress"),
-                scaleList(unit, maxValueList)
+                self.scaleList(unit, maxValueList)
               )
             )
           ),
@@ -83,7 +83,7 @@ class MultiProgressMeter2Client:
               Id("rep_hProgress"),
               HMultiProgressMeter(
                 Id("hProgress"),
-                scaleList(unit, maxValueList)
+                self.scaleList(unit, maxValueList)
               )
             ),
             HSpacing(0.5),
@@ -93,7 +93,7 @@ class MultiProgressMeter2Client:
       )
 
       UI.ChangeWidget(Id("unit"), "Value", Term("unit", unit))
-      updateProgress(unit, values)
+      self.updateProgress(unit, self.values)
 
 
       #
@@ -110,7 +110,7 @@ class MultiProgressMeter2Client:
           currentUnitID = UI.QueryWidget("unit", "CurrentButton")
           print "type %s"%type(currentUnitID)
           #if Ops.is_term?(currentUnitID):
-          if isinstance (currentUnitID, Term):
+          if isinstance (currentUnitID, YCPTerm):
             unit = currentUnitID.value(0)
 
             ycpbuiltins.y2milestone("New unit: 2^%1", unit)
@@ -118,22 +118,22 @@ class MultiProgressMeter2Client:
               "rep_vProgress",
               VMultiProgressMeter(
                 Id("vProgress"),
-                scaleList(unit, maxValueList)
+                self.scaleList(unit, maxValueList)
               )
             )
             UI.ReplaceWidget(
               "rep_hProgress",
               HMultiProgressMeter(
                 Id("hProgress"),
-                scaleList(unit, maxValueList)
+                self.scaleList(unit, maxValueList)
               )
             )
-            updateProgress(unit, values)
+            self.updateProgress(unit, self.values)
         if widgetClass == "Slider":
-          updateProgress(unit, values)
-          values = scaleList(unit, getValues)
-          UI.ChangeWidget("vProgress", "Values", values)
-          UI.ChangeWidget("hProgress", "Values", values)
+          self.updateProgress(unit, self.values)
+          self.values = self.scaleList(unit, self.getValues())
+          UI.ChangeWidget("vProgress", "Values", self.values)
+          UI.ChangeWidget("hProgress", "Values", self.values)
 
         if id == "cancel":
           break
@@ -148,7 +148,7 @@ class MultiProgressMeter2Client:
 
     # Return a VBox term with Slider widgets for each list value.
     #
-def slidersVBox(maxValuesList, currentValuesList):
+    def slidersVBox(self, maxValuesList, currentValuesList):
       maxValuesList = copy.deepcopy(maxValuesList)
       currentValuesList = copy.deepcopy(currentValuesList)
       vbox = VBox()
@@ -169,12 +169,12 @@ def slidersVBox(maxValuesList, currentValuesList):
         i = i + 1
 
       #deep_copy(vbox)
-
+      return vbox
 
     # Apply unit to a list of values. Return the scaled list.
     #
-def scaleList(unit, values):
-      values = copy.deepcopy(values)
+    def scaleList(self, unit, values):
+      self.values = copy.deepcopy(values)
       scaledValues = []
 
       for val in ycpbuiltins.foreach(values):
@@ -186,7 +186,7 @@ def scaleList(unit, values):
 
     # Get the current values from all sliders and return them as a list.
     #
-def getValues():
+    def getValues(self):
       values = []
       i = 0
 
@@ -209,8 +209,8 @@ def getValues():
 
     # Update progress meters with values from sliders.
     #
-def updateProgress(unit, values):
-      values = scaleList(unit, getValues)
+    def updateProgress(self, unit, values):
+      self.values = self.scaleList(unit, self.getValues())
       UI.ChangeWidget("vProgress", "Values", values)
       UI.ChangeWidget("hProgress", "Values", values)
 
