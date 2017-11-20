@@ -234,28 +234,28 @@ TimeoutUserInput.rb			Done
 TimezoneSelector.rb			Done		missing access to Directory.themedir (example modified to use hardcoded path)
 TooBig.rb
 Tree-Checkbox.rb			Done		again need to do an unintuitive Id for ChangeWidget, this might be just unavaoidable difference in py/rub (and handling of ':') but worth looking into UI.ChangeWidget("mod", "SelectedItems", [Id("xmas"), Id("newyear")]) vs UI.ChangeWidget("mod", "SelectedItems", [:xmas, :newyear])
-Tree-Checkbox2.rb
-Tree-Checkbox3.rb
-Tree-Checkbox4.rb
-Tree-icons.rb
-Tree-recursive-large.rb
-Tree-replace-items.rb
-Tree1.rb
-Tree2.rb
-Tree3.rb
-Tree4.rb
-UserInput.rb
-VBox1.rb
-WaitForEvent.rb
-Weight1.rb
-Weight2.rb
-WidgetExists.rb
-WindowID.rb
-Wizard-SetDesktopTitle.rb
-Wizard-popup.rb
-Wizard1.rb
-Wizard2.rb
-Wizard3.rb
-Wizard4.rb
-win_resizer.rb
-win_resizer2.rb
+Tree-Checkbox2.rb			Done
+Tree-Checkbox3.rb			Done
+Tree-Checkbox4.rb			Done
+Tree-icons.rb				Done
+Tree-recursive-large.rb			Done
+Tree-replace-items.rb			Done
+Tree1.rb				Done
+Tree2.rb				Done
+Tree3.rb				Done
+Tree4.rb				Done
+UserInput.rb				Done
+VBox1.rb				Done
+WaitForEvent.rb				Done
+Weight1.rb				Done
+Weight2.rb				Done
+WidgetExists.rb				Done
+WindowID.rb				Done
+Wizard-SetDesktopTitle.rb		Done
+Wizard-popup.rb				Done
+Wizard1.rb				Done
+Wizard2.rb				Done
+Wizard3.rb				Done
+Wizard4.rb				Done
+win_resizer.rb				Done
+win_resizer2.rb				Done
