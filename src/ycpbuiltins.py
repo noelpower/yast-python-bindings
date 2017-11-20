@@ -137,6 +137,9 @@ def flatten(lists):
 def union(list1, list2):
     return list(set().union(list1, list2))
 
+def merge(list1, list2):
+    return list1 + list2
+
 def random(maxint):
     return pyrand_range(0, maxint)
 
