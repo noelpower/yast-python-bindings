@@ -16,12 +16,12 @@ class MultiSelectionBoxCurrentItemClient:
             Id("toppings"),
             "Select pizza toppings:",
             [
-              Item(Id('0'), "Cheese", True),
-              Item(Id('1'), "Tomatoes", True),
-              Item(Id('2'), "Mushrooms", False),
-              Item(Id('3'), "Onions"),
-              Item(Id('4'), "Salami"),
-              Item(Id('5'), "Ham")
+              Item(Id(0), "Cheese", True),
+              Item(Id(1), "Tomatoes", True),
+              Item(Id(2), "Mushrooms", False),
+              Item(Id(3), "Onions"),
+              Item(Id(4), "Salami"),
+              Item(Id(5), "Ham")
             ]
           ),
           HBox(
@@ -44,7 +44,7 @@ class MultiSelectionBoxCurrentItemClient:
             current = 0
 
           ycpbuiltins.y2milestone("Current: %1", current)
-          UI.ChangeWidget("toppings", "CurrentItem", Id(str(current)))
+          UI.ChangeWidget("toppings", "CurrentItem", current)
         if widget == "cancel":
           break     
 
