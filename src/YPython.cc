@@ -201,7 +201,7 @@ YPython::loadModule(string modulePath)
     pModuleName = PyString_FromString(module.name().c_str());
     //check if dictionary contain "dictionary" for module
     if (PyDict_Contains(YPython::_pMainDicts, pModuleName) == 0) {
-       pMain = YPython::yPython().importModule(module.name());
+       pMain = YPython::yPython().importModule(modulePath);
        if (pMain == NULL){
            y2error("Can't import module %s", module.name().c_str());
 
