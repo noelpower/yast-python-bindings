@@ -28,6 +28,7 @@ as published by the Free Software Foundation; either version
 #include "Y2PythonClientComponent.h"
 #include "wfm/Y2WFMComponent.h"
 #include "ycp/YCPBoolean.h"
+#include <yui/YCommandLine.h>
 
 using std::string;
 
@@ -54,18 +55,33 @@ YCPValue callClient(const string& client)
 {
     FILE *fp = fopen(client.c_str(), "r");
     int res = 0;
+    YCommandLine cmdLine;
+    if (cmdLine.size() > 1) {
+        cmdLine.remove(0); // remove y2base
+    }
 #if PY_MAJOR_VERSION >= 3
     wstring wclient = wstring(client.begin(), client.end());
     wchar_t* arg1 = (wchar_t*)wclient.c_str();
+    wchar_t** args = new wchar_t*[cmdLine.size()];
+    args[0] = arg1; // replace script with full path
+    for (int i = 1; i < cmdLine.size(); ++i) {
+        wstring ws = wstring(cmdLine[i].begin(), cmdLine[i].end());
+        args[i] = new wchar_t[ws.length()];
+        wcscpy(args[i], ws.c_str());
+    }
 #else
     char *arg1 = (char*)client.c_str();
+    char **args = cmdLine.argv();
+    free(args[0]);
+    args[0] = arg1; // replace with full path to script
+   
 #endif
     if (fp == NULL) {
         return YCPBoolean(false);
     }
 
     Py_Initialize();
-    PySys_SetArgv(1, &arg1);
+    PySys_SetArgv(cmdLine.argc(), args);
     res = PyRun_SimpleFile(fp, client.c_str());
     Py_Finalize();
     fclose(fp);

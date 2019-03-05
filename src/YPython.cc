@@ -48,6 +48,8 @@
 #include <ycp/YCPExternal.h>
 #include <ycp/Point.h>
 
+#include <yui/YCommandLine.h>
+
 #include "YPythonNamespace.h"
 #include "ytypes.h"
 #include "yast.h"
@@ -176,7 +178,27 @@ YPython::importModule(string modulePath)
     ModuleFilePath module(modulePath);
     //initialize python
     if (!Py_IsInitialized()) {
+        YCommandLine cmdLine;
         Py_Initialize();
+	/*
+	 * Since this is as a result of a import from Yast
+	 * possibly from ruby (or perl) we don't want to update
+	 * 'path'. Additionally there seems no point in trying to
+	 * point arg[0] at the 'real' script instead of y2base.
+	 */
+#if PY_MAJOR_VERSION >= 3
+        wchar_t** args = new wchar_t*[cmdLine.size()];
+        for (int i = 0; i < cmdLine.size(); ++i) {
+            wstring ws = wstring(cmdLine[i].begin(), cmdLine[i].end());
+            args[i] = new wchar_t[ws.length()];
+            wcscpy(args[i], ws.c_str());
+        }
+#else
+        char **args = cmdLine.argv();
+	free(args[0]); // release old value
+        args[0] = arg1; // replace with full path to script
+#endif
+        PySys_SetArgv(cmdLine.argc(), args);
     }
 
     // put module path in os.path for loading
